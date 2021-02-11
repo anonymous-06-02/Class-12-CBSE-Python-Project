@@ -1,3 +1,5 @@
+
+
 def menu():
     print("")
     print("")
@@ -46,10 +48,10 @@ def add():
     print("")
 
     print("These are the rooms that are currently available")
-    print("1-Normal (₹500/Day)")
-    print("2-Deluxe (₹1000/Day)")
-    print("3-Super Deluxe (₹1500/Day)")
-    print("4-Premium Deluxe (₹2000/Day)")
+    print("1-Normal (500/Day)")
+    print("2-Deluxe (1000/Day)")
+    print("3-Super Deluxe (1500/Day)")
+    print("4-Premium Deluxe (2000/Day)")
     print("")
     Room_Type=int(input("Which type you want(1-4): "))
     print("")
@@ -69,7 +71,7 @@ def add():
 
     Days=int(input("How many days you will stay: "))
     Money=x*Days
-    Money='₹'+str(Money)
+    Money=str(Money)
     print("")
 
     print("You have to pay ",(Money))
@@ -80,10 +82,12 @@ def add():
     print("")
 
 
-    file1 = open("Management.txt", "r")
-    contents = file1.read()
-    dictionary = eval(contents)
-    file1.close()
+    File=open('Management.txt','r')
+    string=File.read()
+    string = string.replace("\'", "\"")
+    dictionary=json.loads(string)
+    File.close()
+
 
     if len(dictionary.get('Room'))==0:
         Room_num='501'
@@ -104,7 +108,7 @@ def add():
     dictionary['Price'].append(Money)
     dictionary['Room'].append(Room_num)
 
-    File=open("Management.txt",'w')
+    File=open("Management.txt",'w',encoding="utf-8")
     File.write(str(dictionary))
     File.close()
 
@@ -116,9 +120,10 @@ def add():
 
 
 import os
+import json
 filecheck = os.path.isfile('Management.txt')
 if filecheck == False :
-    File = open("Management.txt", 'a')
+    File = open("Management.txt", 'a', encoding="utf-8")
     temp1 = {'First_Name': [], 'Last_Name': [], 'Phone_num': [], 'Room_Type': [], 'Days': [], 'Price': [], 'Room':[]}
     File.write(str(temp1))
     File.close()
@@ -129,10 +134,12 @@ def modify():
     print("")
     Room=(input("Enter your Room Number: "))
 
-    file1 = open("Management.txt", "r")
-    contents = file1.read()
-    dictionary = eval(contents)
-    file1.close()
+    File=open('Management.txt','r')
+    string=File.read()
+    string = string.replace("\'", "\"")
+    dictionary=json.loads(string)
+    File.close()
+
 
     listt=dictionary['Room']
     index=int(listt.index(Room))
@@ -146,7 +153,7 @@ def modify():
     choice=(input("Enter your choice: "))
     print("")
 
-    File=open("Management.txt",'w')
+    File=open("Management.txt",'w',encoding="utf-8")
 
     if choice == str(1):
         user_input=input('Enter New First Name: ')
@@ -182,10 +189,12 @@ def modify():
 
 def search():
 
-    file1 = open("Management.txt", "r")
-    contents = file1.read()
-    dictionary = eval(contents)
-    file1.close()
+    File=open('Management.txt','r')
+    string=File.read()
+    string = string.replace("\'", "\"")
+    dictionary=json.loads(string)
+    File.close()
+
 
     print("")
     Room = (input("Enter your Room Number: "))
@@ -214,10 +223,12 @@ def search():
     exit_menu()
 
 def remove():
-    file1 = open("Management.txt", "r")
-    contents = file1.read()
-    dictionary = eval(contents)
-    file1.close()
+    File=open('Management.txt','r')
+    string=File.read()
+    string = string.replace("\'", "\"")
+    dictionary=json.loads(string)
+    File.close()
+
 
     print("")
     Room = (input("Enter your Room Number: "))
@@ -263,7 +274,7 @@ def remove():
     dictionary['Room']=None
     dictionary['Room']=listt_num
 
-    file1=open('Management.txt','w')
+    file1=open('Management.txt','w',encoding="utf-8")
     file1.write(str(dictionary))
     file1.close()
 
@@ -273,10 +284,12 @@ def remove():
 
 def view():
 
-    file1 = open("Management.txt", "r")
-    contents = file1.read()
-    dictionary = eval(contents)
-    file1.close()
+    File=open('Management.txt','r')
+    string=File.read()
+    string = string.replace("\'", "\"")
+    dictionary=json.loads(string)
+    File.close()
+
 
     listt = dictionary['Room']
     a = len(listt)
