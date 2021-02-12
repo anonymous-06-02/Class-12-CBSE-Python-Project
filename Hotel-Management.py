@@ -131,8 +131,6 @@ if filecheck == False :
 
 
 def modify():
-    print("")
-    Room=(input("Enter your Room Number: "))
 
     File=open('Management.txt','r')
     string=File.read()
@@ -140,52 +138,62 @@ def modify():
     dictionary=json.loads(string)
     File.close()
 
+    dict_num=dictionary.get("Room")
+    dict_len=len(dict_num)
+    if dict_len==0:
+        print("")
+        print("There is no data in our database")
+        print("")
+        menu()
+    else:
+        print("")
+        Room=(input("Enter your Room Number: "))
 
-    listt=dictionary['Room']
-    index=int(listt.index(Room))
+        listt=dictionary['Room']
+        index=int(listt.index(Room))
 
-    print("")
-    print("1-Change your first name")
-    print("2-Change your last name")
-    print("3-Change your phone number")
+        print("")
+        print("1-Change your first name")
+        print("2-Change your last name")
+        print("3-Change your phone number")
 
-    print("")
-    choice=(input("Enter your choice: "))
-    print("")
+        print("")
+        choice=(input("Enter your choice: "))
+        print("")
 
-    File=open("Management.txt",'w',encoding="utf-8")
+        File=open("Management.txt",'w',encoding="utf-8")
 
-    if choice == str(1):
-        user_input=input('Enter New First Name: ')
-        listt1=dictionary['First_Name']
-        listt1[index]=user_input
-        dictionary['First_Name']=None
-        dictionary['First_Name']=listt1
-        File.write(str(dictionary))
-        File.close()
+        if choice == str(1):
+            user_input=input('Enter New First Name: ')
+            listt1=dictionary['First_Name']
+            listt1[index]=user_input
+            dictionary['First_Name']=None
+            dictionary['First_Name']=listt1
+            File.write(str(dictionary))
+            File.close()
 
-    elif choice == str(2):
-        user_input = input('Enter New Last Name: ')
-        listt1 = dictionary['Last_Name']
-        listt1[index] = user_input
-        dictionary['Last_Name'] = None
-        dictionary['Last_Name'] = listt1
-        File.write(str(dictionary))
-        File.close()
+        elif choice == str(2):
+            user_input = input('Enter New Last Name: ')
+            listt1 = dictionary['Last_Name']
+            listt1[index] = user_input
+            dictionary['Last_Name'] = None
+            dictionary['Last_Name'] = listt1
+            File.write(str(dictionary))
+            File.close()
 
-    elif choice == str(3):
-        user_input = input('Enter New Phone Number: ')
-        listt1 = dictionary['Phone_num']
-        listt1[index] = user_input
-        dictionary['Phone_num'] = None
-        dictionary['Phone_num'] = listt1
-        File.write(str(dictionary))
-        File.close()
+        elif choice == str(3):
+            user_input = input('Enter New Phone Number: ')
+            listt1 = dictionary['Phone_num']
+            listt1[index] = user_input
+            dictionary['Phone_num'] = None
+            dictionary['Phone_num'] = listt1
+            File.write(str(dictionary))
+            File.close()
 
-    print("")
-    print("Your data has been successfully updated")
+        print("")
+        print("Your data has been successfully updated")
 
-    exit_menu()
+        exit_menu()
 
 def search():
 
@@ -195,32 +203,39 @@ def search():
     dictionary=json.loads(string)
     File.close()
 
+    dict_num=dictionary.get("Room")
+    dict_len=len(dict_num)
+    if dict_len==0:
+        print("")
+        print("There is no data in our database")
+        print("")
+        menu()
+    else:
+        print("")
+        Room = (input("Enter your Room Number: "))
+        print("")
 
-    print("")
-    Room = (input("Enter your Room Number: "))
-    print("")
+        listt = dictionary['Room']
+        index = int(listt.index(Room))
 
-    listt = dictionary['Room']
-    index = int(listt.index(Room))
+        listt_fname=dictionary.get('First_Name')
+        listt_lname=dictionary.get('Last_Name')
+        listt_phone=dictionary.get('Phone_num')
+        listt_type=dictionary.get('Room_Type')
+        listt_days=dictionary.get('Days')
+        listt_price=dictionary.get('Price')
+        listt_num=dictionary.get('Room')
 
-    listt_fname=dictionary.get('First_Name')
-    listt_lname=dictionary.get('Last_Name')
-    listt_phone=dictionary.get('Phone_num')
-    listt_type=dictionary.get('Room_Type')
-    listt_days=dictionary.get('Days')
-    listt_price=dictionary.get('Price')
-    listt_num=dictionary.get('Room')
+        print("")
+        print("First Name:",listt_fname[index])
+        print("Last Name:",listt_lname[index])
+        print("Phone number:",listt_phone[index])
+        print("Room Type:",listt_type[index])
+        print('Days staying:',listt_days[index])
+        print('Money paid:',listt_price[index])
+        print('Room Number:',listt_num[index])
 
-    print("")
-    print("First Name:",listt_fname[index])
-    print("Last Name:",listt_lname[index])
-    print("Phone number:",listt_phone[index])
-    print("Room Type:",listt_type[index])
-    print('Days staying:',listt_days[index])
-    print('Money paid:',listt_price[index])
-    print('Room Number:',listt_num[index])
-
-    exit_menu()
+        exit_menu()
 
 def remove():
     File=open('Management.txt','r')
@@ -229,58 +244,65 @@ def remove():
     dictionary=json.loads(string)
     File.close()
 
+    dict_num=dictionary.get("Room")
+    dict_len=len(dict_num)
+    if dict_len==0:
+        print("")
+        print("There is no data in our database")
+        print("")
+        menu()
+    else:
+        print("")
+        Room = (input("Enter your Room Number: "))
+        print("")
 
-    print("")
-    Room = (input("Enter your Room Number: "))
-    print("")
+        listt = dictionary['Room']
+        index = int(listt.index(Room))
 
-    listt = dictionary['Room']
-    index = int(listt.index(Room))
+        listt_fname = dictionary.get('First_Name')
+        listt_lname = dictionary.get('Last_Name')
+        listt_phone = dictionary.get('Phone_num')
+        listt_type = dictionary.get('Room_Type')
+        listt_days = dictionary.get('Days')
+        listt_price = dictionary.get('Price')
+        listt_num = dictionary.get('Room')
 
-    listt_fname = dictionary.get('First_Name')
-    listt_lname = dictionary.get('Last_Name')
-    listt_phone = dictionary.get('Phone_num')
-    listt_type = dictionary.get('Room_Type')
-    listt_days = dictionary.get('Days')
-    listt_price = dictionary.get('Price')
-    listt_num = dictionary.get('Room')
+        del listt_fname[index]
+        del listt_lname[index]
+        del listt_phone[index]
+        del listt_type[index]
+        del listt_days[index]
+        del listt_price[index]
+        del listt_num[index]
 
-    del listt_fname[index]
-    del listt_lname[index]
-    del listt_phone[index]
-    del listt_type[index]
-    del listt_days[index]
-    del listt_price[index]
-    del listt_num[index]
+        dictionary['First_Name'] = None
+        dictionary['First_Name'] = listt_fname
 
-    dictionary['First_Name'] = None
-    dictionary['First_Name'] = listt_fname
+        dictionary['Last_Name']= None
+        dictionary['Last_Name']= listt_lname
 
-    dictionary['Last_Name']= None
-    dictionary['Last_Name']= listt_lname
+        dictionary['Phone_num']= None
+        dictionary['Phone_num']=listt_phone
 
-    dictionary['Phone_num']= None
-    dictionary['Phone_num']=listt_phone
+        dictionary['Room_Type']=None
+        dictionary['Room_Type']=listt_type
 
-    dictionary['Room_Type']=None
-    dictionary['Room_Type']=listt_type
+        dictionary['Days']=None
+        dictionary['Days']=listt_days
 
-    dictionary['Days']=None
-    dictionary['Days']=listt_days
+        dictionary['Price']=None
+        dictionary['Price']=listt_price
 
-    dictionary['Price']=None
-    dictionary['Price']=listt_price
+        dictionary['Room']=None
+        dictionary['Room']=listt_num
 
-    dictionary['Room']=None
-    dictionary['Room']=listt_num
+        file1=open('Management.txt','w',encoding="utf-8")
+        file1.write(str(dictionary))
+        file1.close()
 
-    file1=open('Management.txt','w',encoding="utf-8")
-    file1.write(str(dictionary))
-    file1.close()
+        print("Details has been removed successfully")
 
-    print("Details has been removed successfully")
-
-    exit_menu()
+        exit_menu()
 
 def view():
 
@@ -290,33 +312,41 @@ def view():
     dictionary=json.loads(string)
     File.close()
 
-
-    listt = dictionary['Room']
-    a = len(listt)
-
-    index=0
-    while index!=a:
-        listt_fname = dictionary.get('First_Name')
-        listt_lname = dictionary.get('Last_Name')
-        listt_phone = dictionary.get('Phone_num')
-        listt_type = dictionary.get('Room_Type')
-        listt_days = dictionary.get('Days')
-        listt_price = dictionary.get('Price')
-        listt_num = dictionary.get('Room')
-
+    dict_num=dictionary.get("Room")
+    dict_len=len(dict_num)
+    if dict_len==0:
         print("")
-        print("First Name:", listt_fname[index])
-        print("Last Name:", listt_lname[index])
-        print("Phone number:", listt_phone[index])
-        print("Room Type:", listt_type[index])
-        print('Days staying:', listt_days[index])
-        print('Money paid:', listt_price[index])
-        print('Room Number:', listt_num[index])
+        print("There is no data in our database")
         print("")
+        menu()
 
-        index=index+1
+    else:
+        listt = dictionary['Room']
+        a = len(listt)
 
-    exit_menu()
+        index=0
+        while index!=a:
+            listt_fname = dictionary.get('First_Name')
+            listt_lname = dictionary.get('Last_Name')
+            listt_phone = dictionary.get('Phone_num')
+            listt_type = dictionary.get('Room_Type')
+            listt_days = dictionary.get('Days')
+            listt_price = dictionary.get('Price')
+            listt_num = dictionary.get('Room')
+
+            print("")
+            print("First Name:", listt_fname[index])
+            print("Last Name:", listt_lname[index])
+            print("Phone number:", listt_phone[index])
+            print("Room Type:", listt_type[index])
+            print('Days staying:', listt_days[index])
+            print('Money paid:', listt_price[index])
+            print('Room Number:', listt_num[index])
+            print("")
+
+            index=index+1
+
+        exit_menu()
 
 def exit():
     print("")
